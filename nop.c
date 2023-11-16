@@ -7,7 +7,7 @@
  */
 void f_nop(stack_t **head, unsigned int counter)
 {
-    (void)head;  // Unused parameter to avoid compiler warning
-    (void)counter;  // Unused parameter to avoid compiler warning
-    // The nop opcode doesn't perform any operation
+    (void)head; 
+    (void)counter;
+    
 }
