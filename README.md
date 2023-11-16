@@ -1,15 +1,9 @@
 # 0x19. C - Stacks, Queues - LIFO, FIFO
-![CFYYWy6UEAE9Ow-](https://user-images.githubusercontent.com/85158665/227301679-72c72c13-7437-4fa7-a1f7-1653890ccfb6.png)
+### About Project
+In this project, we developed a straightforward interpreter for Monty ByteCodes. The interpreter is designed to read a bytecode file and execute the commands specified in the bytecode.
 
-## Resources
-**Read or watch**:
-
-* [Google]()
-* [How do I use extern to share variables between source files in C?]()
-* [Stacks and Queues in C]()
-* [Stack operations]()
-* [Queue operations]()
 ## Requirements
+
 ### General
 * Allowed editors: `vi`, `vim`, `emacs`
 * All your files will be compiled on Ubuntu 20.04 LTS using gcc, using the options `-Wall -Werror -Wextra -pedantic -std=c89`
@@ -23,3 +17,14 @@
 * Don’t forget to push your header file
 * All your header files should be include guarded
 * You are expected to do the tasks in the order shown in the project
+
+## Objectives:
+- Understand the meanings of LIFO and FIFO.
+- Comprehend the concept of a stack and recognize its appropriate applications.
+- Understand the concept of a queue and recognize its suitable use cases.
+- Familiarize yourself with common implementations of stacks and queues.
+- Recognize the most prevalent use cases for both stacks and queues.
+- Learn best practices for utilizing global variables.
+
+## Authors/Collaborators
+[Nti Alfred](https://github.com/FreddyWhest/) & [Eunice Amable](https://github.com/Eunice-Serani/)
