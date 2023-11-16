@@ -32,4 +32,3 @@ There should be one project repository per group. If you clone/fork/whatever a p
 
 ## Authors/Collaborators
 [Nti Alfred](https://github.com/FreddyWhest/) & [Eunice Amable](https://github.com/Eunice-Serani/)
->>>>>>> 3042f84055432ba937be66d5e852f8bbbb8c9e9d
