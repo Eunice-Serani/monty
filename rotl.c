@@ -1,7 +1,7 @@
 #include "monty.h"
 
 /**
- * f_rotl - Rotates the stack to the top.
+ * f_rotl - Rotates the stack to the bottom.
  * @head: Double pointer to the head of the stack.
  * @counter: Line number being executed.
  */
@@ -13,17 +13,22 @@ void f_rotl(stack_t **head, unsigned int counter)
 
     if (*head != NULL && (*head)->next != NULL)
     {
-        temp = *head;
         last = *head;
 
         while (last->next != NULL)
             last = last->next;
 
-        *head = temp->next;
-        (*head)->prev = NULL;
+        temp = last->prev;
 
-        temp->next = NULL;
-        temp->prev = last;
-        last->next = temp;
+        if (temp != NULL)
+        {
+            temp->next = NULL;
+            last->prev = NULL;
+
+            last->next = *head;
+            (*head)->prev = last;
+
+            *head = last;
+        }
     }
 }
