@@ -1,23 +1,13 @@
 #include "monty.h"
 
 /**
- * f_stack - Sets the format of the data to a stack (LIFO).
- * @head: Double pointer to the head of the stack.
- * @counter: Line number being executed.
+ * f_queue - print first node of queue
+ * @head: first node of queue (unused)
+ * @counter: line counter (unused)
+ *
+ * Return: none
  */
-void f_stack(stack_t **head, unsigned int counter)
-{
-	(void)head;
-	(void)counter;
 
-	bus.lifi = 0;
-}
-
-/**
- * f_queue - Sets the format of the data to a queue (FIFO).
- * @head: Double pointer to the head of the stack.
- * @counter: Line number being executed.
- */
 void f_queue(stack_t **head, unsigned int counter)
 {
 	(void)head;
