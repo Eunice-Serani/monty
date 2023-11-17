@@ -1,36 +1,59 @@
 #include "monty.h"
 
-
 /**
  * f_push - Pushes an element to the stack.
- * @head: Double pointer to the beginning of the stack.
- * @counter: Line number in the Monty file.
+ * @head: Double pointer to the head of the stack.
+ * @number: Integer to be pushed onto the stack.
  */
-void f_push(stack_t **head, unsigned int counter)
+void f_push(stack_t **head, unsigned int number)
 {
-	if (bus.arg == NULL || !is_numeric(bus.arg))
-	{
-		fprintf(stderr, "L%d: usage: push integer\n", counter);
-		exit(EXIT_FAILURE);
-	}
+    stack_t *new_node;
 
-	addnode(head, atoi(bus.arg));
+    new_node = malloc(sizeof(stack_t));
+    if (new_node == NULL)
+    {
+        fprintf(stderr, "Error: malloc failed\n");
+        exit(EXIT_FAILURE);
+    }
+
+    if (bus.lifi == 0) /* Stack mode (LIFO) */
+    {
+        new_node->n = number;
+        new_node->prev = NULL;
+        new_node->next = *head;
+
+        if (*head != NULL)
+            (*head)->prev = new_node;
+
+        *head = new_node;
+    }
+    else /* Queue mode (FIFO) */
+    {
+        new_node->n = number;
+        new_node->prev = *head;
+        new_node->next = NULL;
+
+        if (*head != NULL)
+            (*head)->next = new_node;
+
+        *head = new_node;
+    }
 }
 
 /**
  * f_pall - Prints all the values on the stack.
- * @head: Double pointer to the beginning of the stack.
- * @counter: Line number in the Monty file.
+ * @head: Double pointer to the head of the stack.
+ * @number: Line number being executed.
  */
-void f_pall(stack_t **head, unsigned int counter)
+void f_pall(stack_t **head, unsigned int number)
 {
-	stack_t *current = *head;
+    stack_t *temp = *head;
 
-	(void)counter;  /* Unused parameter to avoid compiler warning */
+    (void)number;
 
-	while (current != NULL)
-	{
-		printf("%d\n", current->n);
-		current = current->next;
-	}
+    while (temp != NULL)
+    {
+        printf("%d\n", temp->n);
+        temp = temp->next;
+    }
 }
