@@ -1,60 +1,63 @@
 #include "monty.h"
 
 /**
- * f_push - Pushes an element to the stack.
- * @head: Double pointer to the head of the stack.
- * @number: Integer to be pushed onto the stack.
+ * f_push - function that adds node to the stack
+ * @head: double head pointer to the stack
+ * @counter: line count
+ *
+ * Return: nothing
  */
-void f_push(stack_t **head, unsigned int number)
+void f_push(stack_t **head, unsigned int counter)
 {
-    stack_t *new_node;
+	int i, m = 0, flag = 0;
 
-    new_node = malloc(sizeof(stack_t));
-    if (new_node == NULL)
-    {
-        fprintf(stderr, "Error: malloc failed\n");
+	if (bus.arg)
+	{
+		if (bus.arg[0] == '-')
+			m++;
+		for (; bus.arg[m] != '\0'; m++)
+		{
+			if (bus.arg[m] > 57 || bus.arg[m] < 48)
+				flag = 1; }
+		if (flag == 1)
+		{ fprintf(stderr, "L%d: usage: push integer\n", counter);
+			fclose(bus.file);
+			free(bus.content);
+			free_stack(*head);
+			exit(EXIT_FAILURE); }}
+	else
+	{ fprintf(stderr, "L%d: usage: push integer\n", counter);
+		fclose(bus.file);
+		free(bus.content);
 		free_stack(*head);
-        exit(EXIT_FAILURE);
-    }
-
-    if (bus.lifi == 0) /* Stack mode (LIFO) */
-    {
-        new_node->n = number;
-        new_node->prev = NULL;
-        new_node->next = *head;
-
-        if (*head != NULL)
-            (*head)->prev = new_node;
-
-        *head = new_node;
-    }
-    else /* Queue mode (FIFO) */
-    {
-        new_node->n = number;
-        new_node->prev = *head;
-        new_node->next = NULL;
-
-        if (*head != NULL)
-            (*head)->next = new_node;
-
-        *head = new_node;
-    }
+		exit(EXIT_FAILURE); }
+	i = atoi(bus.arg);
+	if (bus.lifi == 0)
+		addnode(head, i);
+	else
+		addqueue(head, i);
 }
 
 /**
- * f_pall - Prints all the values on the stack.
- * @head: Double pointer to the head of the stack.
- * @number: Line number being executed.
- */
-void f_pall(stack_t **head, unsigned int number)
+* f_pall - print everything in stack
+* @head: pointer to pointer of first node
+* @counter: line counter (not used)
+*
+* Return: none
+*/
+
+void f_pall(stack_t **head, unsigned int counter)
 {
-    stack_t *temp = *head;
+	stack_t *h;
+	(void)counter;
 
-    (void)number;
+	h = *head;
+	if (h == NULL)
+		return;
 
-    while (temp != NULL)
-    {
-        printf("%d\n", temp->n);
-        temp = temp->next;
-    }
+	while (h)
+	{
+		printf("%d\n", h->n);
+		h = h->next;
+	}
 }
