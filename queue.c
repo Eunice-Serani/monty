@@ -1,7 +1,7 @@
 #include "monty.h"
 
 /**
- * stack_operation - Sets the format of the data to a stack (LIFO).
+ * f_stack - Sets the format of the data to a stack (LIFO).
  * @head: Double pointer to the head of the stack.
  * @counter: Line number being executed.
  */
