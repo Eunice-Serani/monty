@@ -16,7 +16,7 @@ void f_push(stack_t **head, unsigned int counter)
 			s++;
 		for (; bus.arg[s] != '\0'; s++)
 		{
-			if (bus.arg[s] > 57 || bus.arg[s] < 48)
+			if (bus.arg[s] > '57' || bus.arg[s] < '48')
 				flag = 1; }
 		if (flag == 1)
 		{ fprintf(stderr, "L%d: usage: push integer\n", counter);
@@ -30,7 +30,7 @@ void f_push(stack_t **head, unsigned int counter)
 		free(bus.content);
 		free_stack(*head);
 		exit(EXIT_FAILURE); }
-	i = atoi(bus.arg);
+	i = strtol(bus.arg);
 	if (bus.lifi == 0)
 		addnode(head, i);
 	else
