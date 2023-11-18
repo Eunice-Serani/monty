@@ -30,7 +30,7 @@ void f_push(stack_t **head, unsigned int counter)
 		free(bus.content);
 		free_stack(*head);
 		exit(EXIT_FAILURE); }
-	i = strtol(bus.arg);
+	i = atoi(bus.arg);
 	if (bus.lifi == 0)
 		addnode(head, i);
 	else
